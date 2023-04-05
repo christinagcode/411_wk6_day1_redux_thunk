@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import Import from '../components/Import';
-import { fetchMakes } from '../redux/actions.js';
+import { deleteMakes, fetchMakes } from '../redux/actions.js';
 
 
   const mapStateToProps = (state) => {
@@ -12,7 +12,8 @@ import { fetchMakes } from '../redux/actions.js';
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      fetchMakes: () => dispatch(fetchMakes())
+      fetchMakes: () => dispatch(fetchMakes()),
+      deleteMake: (index) => dispatch(deleteMakes(index))
     }
   }
   

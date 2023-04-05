@@ -28,3 +28,11 @@ export const fetchMakes = () => {
         })
     }
 }
+
+export const deleteMakes = (index) =>{
+    console.log(index, 'index')
+    return {
+        type: 'DELETE_MAKE',
+        value: index 
+    }
+}

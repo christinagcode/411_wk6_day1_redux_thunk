@@ -1,6 +1,15 @@
 import React from "react";
-
-import { Button, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
+import {
+  Button,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  IconButton,
+  Table,
+} from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Import = (props) => {
   // fill out this component
@@ -10,23 +19,35 @@ const Import = (props) => {
       <Button variant="contained" color="primary" onClick={props.fetchMakes}>
         Import
       </Button>
-      <TableBody>
-      <TableHead>
+      <h2>COUNT: {props.makes.length}</h2>
+      <Table>
+        <TableHead>
           <TableRow>
             <TableCell>Id</TableCell>
-            <TableCell align="right">Makes</TableCell>
-            <TableCell align="right">Action</TableCell>
+            <TableCell>Makes</TableCell>
+            <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>
-
-        {props.makes.map((make) => (
-          <TableRow key={make.MakeId}>
-            <TableCell>{make.MakeId}</TableCell>
-            <TableCell>{make.MakeName}</TableCell>
-            <TableCell>Delete</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
+        <TableBody>
+          {props.makes.map((make, index) => (
+            <TableRow key={make.MakeId}>
+              <TableCell>{make.MakeId}</TableCell>
+              <TableCell>{make.MakeName}</TableCell>
+              <TableCell>
+                {console.log(make)}
+                <IconButton
+                  onClick={() => {
+                    console.log("clickkkkkk");
+                    props.deleteMake(index);
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </>
   );
 };
