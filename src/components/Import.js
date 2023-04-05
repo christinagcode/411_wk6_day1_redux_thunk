@@ -1,11 +1,34 @@
-import React from 'react'
+import React from "react";
+
+import { Button, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 
 const Import = (props) => {
-    // fill out this component
+  // fill out this component
 
-    return (
-        <p>Import Component</p>
-    )
-}
+  return (
+    <>
+      <Button variant="contained" color="primary" onClick={props.fetchMakes}>
+        Import
+      </Button>
+      <TableBody>
+      <TableHead>
+          <TableRow>
+            <TableCell>Id</TableCell>
+            <TableCell align="right">Makes</TableCell>
+            <TableCell align="right">Action</TableCell>
+          </TableRow>
+        </TableHead>
 
-export default Import
+        {props.makes.map((make) => (
+          <TableRow key={make.MakeId}>
+            <TableCell>{make.MakeId}</TableCell>
+            <TableCell>{make.MakeName}</TableCell>
+            <TableCell>Delete</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </>
+  );
+};
+
+export default Import;
